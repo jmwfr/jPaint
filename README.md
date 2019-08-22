@@ -18,4 +18,4 @@ This software is licensed under the MIT license (details [here](LICENSE.md))
 
 ## Known issues and todos
 
-Too much things to add !!! :twink:
+Too much things to add !!! :wink:
