@@ -7,6 +7,8 @@ package com.jmwfr.jpaint;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.ArrayList;
+import javax.swing.JColorChooser;
 
 /**
  *
@@ -36,10 +38,10 @@ public class MainFrame extends javax.swing.JFrame {
         rbRectangle = new javax.swing.JRadioButton();
         rbCircle = new javax.swing.JRadioButton();
         btnClear = new javax.swing.JButton();
-        cbBorderColor = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        cbFillColor = new javax.swing.JComboBox<>();
+        btnBorderColor = new java.awt.Button();
+        btnFillColor = new java.awt.Button();
         drawPanel = new com.jmwfr.jpaint.MyCanvas();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -70,17 +72,29 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        cbBorderColor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "BLACK", "BLUE", "GREEN", "RED", "YELLOW" }));
-        cbBorderColor.setName("cbBorderColor"); // NOI18N
-
         jLabel1.setText("Border Color");
         jLabel1.setName("lblBorderColor"); // NOI18N
 
         jLabel2.setText("Fill Color");
         jLabel2.setName("lblFillColor"); // NOI18N
 
-        cbFillColor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---", "BLACK", "BLUE", "GREEN", "RED", "YELLOW" }));
-        cbFillColor.setName("cbFillColor"); // NOI18N
+        btnBorderColor.setBackground(new java.awt.Color(0, 0, 0));
+        btnBorderColor.setMinimumSize(new java.awt.Dimension(25, 24));
+        btnBorderColor.setName("btnBorderColor"); // NOI18N
+        btnBorderColor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBorderColorMouseClicked(evt);
+            }
+        });
+
+        btnFillColor.setBackground(new java.awt.Color(255, 255, 255));
+        btnFillColor.setMinimumSize(new java.awt.Dimension(25, 24));
+        btnFillColor.setName("btnFillColor"); // NOI18N
+        btnFillColor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnFillColorMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelTopLayout = new javax.swing.GroupLayout(panelTop);
         panelTop.setLayout(panelTopLayout);
@@ -96,40 +110,34 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cbBorderColor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnBorderColor, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cbFillColor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
+                .addComponent(btnFillColor, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 427, Short.MAX_VALUE)
                 .addComponent(btnClear)
                 .addContainerGap())
         );
         panelTopLayout.setVerticalGroup(
             panelTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelTopLayout.createSequentialGroup()
-                .addGap(11, 11, 11)
+                .addContainerGap()
                 .addGroup(panelTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(rbLine)
                     .addComponent(rbRectangle)
                     .addComponent(rbCircle)
-                    .addComponent(cbBorderColor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnClear)
                     .addComponent(jLabel1)
-                    .addGroup(panelTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                        .addComponent(cbFillColor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel2)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel2)
+                    .addComponent(btnBorderColor, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnFillColor, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         drawPanel.setBackground(new java.awt.Color(255, 255, 255));
         drawPanel.setAlignmentY(0.0F);
         drawPanel.setName("drawPanel"); // NOI18N
-        drawPanel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                drawPanelMousePressed(evt);
-            }
-        });
 
         javax.swing.GroupLayout drawPanelLayout = new javax.swing.GroupLayout(drawPanel);
         drawPanel.setLayout(drawPanelLayout);
@@ -139,7 +147,7 @@ public class MainFrame extends javax.swing.JFrame {
         );
         drawPanelLayout.setVerticalGroup(
             drawPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 307, Short.MAX_VALUE)
+            .addGap(0, 305, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -163,14 +171,25 @@ public class MainFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void drawPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawPanelMousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_drawPanelMousePressed
-
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
         Graphics g = drawPanel.getGraphics();
         drawPanel.repaint();
+        this.drawPanel.figuresList = new ArrayList<Figure>();
     }//GEN-LAST:event_btnClearActionPerformed
+
+    private void btnBorderColorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBorderColorMouseClicked
+        Color initColor = this.btnBorderColor.getBackground();
+        Color newBorderColor = JColorChooser.showDialog(this, "Choose border color", initColor);
+        if(newBorderColor != null)
+            this.btnBorderColor.setBackground(newBorderColor);
+    }//GEN-LAST:event_btnBorderColorMouseClicked
+
+    private void btnFillColorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFillColorMouseClicked
+        Color initColor = this.btnFillColor.getBackground();
+        Color newFillColor = JColorChooser.showDialog(this, "Choose fill color", initColor);
+        if(newFillColor != null)
+            this.btnFillColor.setBackground(newFillColor);
+    }//GEN-LAST:event_btnFillColorMouseClicked
 
     /**
      * @param args the command line arguments
@@ -208,9 +227,9 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private java.awt.Button btnBorderColor;
     private javax.swing.JButton btnClear;
-    private javax.swing.JComboBox<String> cbBorderColor;
-    private javax.swing.JComboBox<String> cbFillColor;
+    private java.awt.Button btnFillColor;
     private com.jmwfr.jpaint.MyCanvas drawPanel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

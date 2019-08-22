@@ -5,6 +5,7 @@
  */
 package com.jmwfr.jpaint;
 
+import java.awt.Button;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
@@ -93,20 +94,19 @@ public class MyCanvas extends JPanel {
     private Color getColor(String colorControlName) {
         JFrame mainFrame = (JFrame)SwingUtilities.getRootPane(this).getParent();
         JPanel panelTop = (JPanel) mainFrame.getContentPane().getComponent(0);
-        String color = null;
+        Color color = null;
         
         for(Component c : panelTop.getComponents())
         {
-            if (c instanceof JComboBox && c.getName() == colorControlName) {
-                color = ((JComboBox) c).getSelectedItem().toString();
+            if (c instanceof Button && c.getName() == colorControlName) {
+                //color = ((JComboBox) c).getSelectedItem().toString();
+                color = ((Button)c).getBackground();
                 break;
             }
         }
         
-        if(color == "---")
-            return null;
-        
-        return this.colorMap.get(color);
+        //return this.colorMap.get(color);
+        return color;
     }
     
     private void myCanvas_MousePressed(MouseEvent e) {
@@ -120,13 +120,15 @@ public class MyCanvas extends JPanel {
     
     private void drawShape() {
         Figure figureToDraw = this.getFigure();
-        figureToDraw.borderColor = this.getColor("cbBorderColor");
+        //figureToDraw.borderColor = this.getColor("cbBorderColor");
+        figureToDraw.borderColor = this.getColor("btnBorderColor");
+        //Color innerColor = this.getColor("cbFillColor");
         
-        Color innerColor = this.getColor("cbFillColor");
-        
-        if(innerColor != null) {
+        /*if(innerColor != null) {
             figureToDraw.fillColor = innerColor;
-        }
+        }*/
+        figureToDraw.fillColor = this.getColor("btnFillColor");;
+        
         
         figureToDraw.pointsList = this.drawPoints;
         figureToDraw.draw(this.getGraphics());
