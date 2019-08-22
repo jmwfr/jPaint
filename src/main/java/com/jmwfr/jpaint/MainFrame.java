@@ -8,6 +8,7 @@ package com.jmwfr.jpaint;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JColorChooser;
 
 /**
@@ -15,6 +16,8 @@ import javax.swing.JColorChooser;
  * @author JMA
  */
 public class MainFrame extends javax.swing.JFrame {
+    
+    //public static List<Figure> figuresList = new ArrayList<Figure>();
     
     /**
      * Creates new form MainFrame
@@ -174,7 +177,7 @@ public class MainFrame extends javax.swing.JFrame {
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
         Graphics g = drawPanel.getGraphics();
         drawPanel.repaint();
-        this.drawPanel.figuresList = new ArrayList<Figure>();
+        drawPanel.figuresList = new ArrayList<Figure>();
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void btnBorderColorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBorderColorMouseClicked
