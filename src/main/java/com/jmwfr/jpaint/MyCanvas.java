@@ -90,18 +90,22 @@ public class MyCanvas extends JPanel {
         return figure;
     }
     
-    private Color getColor() {
+    private Color getColor(String colorControlName) {
         JFrame mainFrame = (JFrame)SwingUtilities.getRootPane(this).getParent();
         JPanel panelTop = (JPanel) mainFrame.getContentPane().getComponent(0);
-        String color = "";
+        String color = null;
         
         for(Component c : panelTop.getComponents())
         {
-            if (c instanceof JComboBox) {
+            if (c instanceof JComboBox && c.getName() == colorControlName) {
                 color = ((JComboBox) c).getSelectedItem().toString();
                 break;
             }
         }
+        
+        if(color == "---")
+            return null;
+        
         return this.colorMap.get(color);
     }
     
@@ -116,7 +120,14 @@ public class MyCanvas extends JPanel {
     
     private void drawShape() {
         Figure figureToDraw = this.getFigure();
-        figureToDraw.drawColor = this.getColor();
+        figureToDraw.borderColor = this.getColor("cbBorderColor");
+        
+        Color innerColor = this.getColor("cbFillColor");
+        
+        if(innerColor != null) {
+            figureToDraw.fillColor = innerColor;
+        }
+        
         figureToDraw.pointsList = this.drawPoints;
         figureToDraw.draw(this.getGraphics());
         

@@ -10,7 +10,7 @@ public class Line extends Figure {
         Point startPoint = this.pointsList.get(0);
         Point endPoint = this.pointsList.get(1);
         
-        g.setColor(this.drawColor);
+        g.setColor(this.borderColor);
         g.drawLine(startPoint.x, startPoint.y, endPoint.x, endPoint.y);
     }
 }

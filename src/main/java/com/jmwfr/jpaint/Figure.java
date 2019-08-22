@@ -17,7 +17,8 @@ public abstract class Figure {
     /**
      * Border color for the figure 
      */
-    public Color drawColor;
+    public Color borderColor;
+    public Color fillColor;
     
     public abstract void draw(Graphics g);
 }

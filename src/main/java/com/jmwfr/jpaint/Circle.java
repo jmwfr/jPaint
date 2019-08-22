@@ -13,8 +13,20 @@ public class Circle extends Figure {
         int width = this.calculateWidth(startPoint.x, endPoint.x);
         int height = this.calculateHeight(startPoint.y, endPoint.y);
         
-        g.setColor(this.drawColor);
-        g.drawOval(startPoint.x, startPoint.y, width, height);
+        g.setColor(this.borderColor);
+        
+        if(endPoint.x > startPoint.x)
+            g.drawOval(startPoint.x, startPoint.y, width, height);
+        else
+            g.drawOval(endPoint.x, endPoint.y, width, height);
+        
+        if(this.fillColor != null) {
+            g.setColor(this.fillColor);
+            if(endPoint.x > startPoint.x)
+                g.fillOval(startPoint.x + 1, startPoint.y + 1, width - 2, height - 2);
+            else
+                g.fillOval(endPoint.x + 1, endPoint.y + 1, width - 2, height - 2);
+        }
     }
     
     /**

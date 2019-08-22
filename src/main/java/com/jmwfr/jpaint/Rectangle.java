@@ -12,9 +12,22 @@ public class Rectangle extends Figure {
 
         int width = this.calculateWidth(startPoint.x, endPoint.x);
         int height = this.calculateHeight(startPoint.y, endPoint.y);
-
-        g.setColor(this.drawColor);
-        g.drawRect(startPoint.x, startPoint.y, width, height);
+        
+        g.setColor(this.borderColor);
+        
+        if(endPoint.x > startPoint.x)
+            g.drawRect(startPoint.x, startPoint.y, width, height);
+        else
+            g.drawRect(endPoint.x, endPoint.y, width, height);
+        
+        if(this.fillColor != null) {
+            g.setColor(this.fillColor);
+            
+            if(endPoint.x > startPoint.x)
+                g.fillRect(startPoint.x + 1, startPoint.y + 1, width - 1, height - 1);
+            else
+                g.fillRect(endPoint.x + 1, endPoint.y + 1, width - 1, height - 1);
+        }
     }
     
     /**

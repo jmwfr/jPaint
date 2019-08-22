@@ -68,11 +68,17 @@
                   <Component id="rbRectangle" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="rbCircle" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="cbBorderColor" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="cbColor" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="cbFillColor" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="105" max="32767" attributes="0"/>
                   <Component id="btnClear" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="300" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -84,8 +90,13 @@
                       <Component id="rbLine" alignment="2" min="-2" max="-2" attributes="0"/>
                       <Component id="rbRectangle" alignment="2" min="-2" max="-2" attributes="0"/>
                       <Component id="rbCircle" alignment="2" min="-2" max="-2" attributes="0"/>
-                      <Component id="cbColor" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="cbBorderColor" alignment="2" min="-2" max="-2" attributes="0"/>
                       <Component id="btnClear" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel1" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" alignment="2" groupAlignment="2" attributes="0">
+                          <Component id="cbFillColor" alignment="2" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel2" alignment="2" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -129,7 +140,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnClearActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JComboBox" name="cbColor">
+        <Component class="javax.swing.JComboBox" name="cbBorderColor">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="5">
@@ -140,11 +151,38 @@
                 <StringItem index="4" value="YELLOW"/>
               </StringArray>
             </Property>
-            <Property name="name" type="java.lang.String" value="cbColor" noResource="true"/>
+            <Property name="name" type="java.lang.String" value="cbBorderColor" noResource="true"/>
           </Properties>
-          <Events>
-            <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cbColorItemStateChanged"/>
-          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Border Color"/>
+            <Property name="name" type="java.lang.String" value="lblBorderColor" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Fill Color"/>
+            <Property name="name" type="java.lang.String" value="lblFillColor" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="cbFillColor">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="6">
+                <StringItem index="0" value="---"/>
+                <StringItem index="1" value="BLACK"/>
+                <StringItem index="2" value="BLUE"/>
+                <StringItem index="3" value="GREEN"/>
+                <StringItem index="4" value="RED"/>
+                <StringItem index="5" value="YELLOW"/>
+              </StringArray>
+            </Property>
+            <Property name="name" type="java.lang.String" value="cbFillColor" noResource="true"/>
+          </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>

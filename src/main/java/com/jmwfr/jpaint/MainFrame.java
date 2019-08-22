@@ -36,7 +36,10 @@ public class MainFrame extends javax.swing.JFrame {
         rbRectangle = new javax.swing.JRadioButton();
         rbCircle = new javax.swing.JRadioButton();
         btnClear = new javax.swing.JButton();
-        cbColor = new javax.swing.JComboBox<>();
+        cbBorderColor = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        cbFillColor = new javax.swing.JComboBox<>();
         drawPanel = new com.jmwfr.jpaint.MyCanvas();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -67,13 +70,17 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        cbColor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "BLACK", "BLUE", "GREEN", "RED", "YELLOW" }));
-        cbColor.setName("cbColor"); // NOI18N
-        cbColor.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cbColorItemStateChanged(evt);
-            }
-        });
+        cbBorderColor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "BLACK", "BLUE", "GREEN", "RED", "YELLOW" }));
+        cbBorderColor.setName("cbBorderColor"); // NOI18N
+
+        jLabel1.setText("Border Color");
+        jLabel1.setName("lblBorderColor"); // NOI18N
+
+        jLabel2.setText("Fill Color");
+        jLabel2.setName("lblFillColor"); // NOI18N
+
+        cbFillColor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---", "BLACK", "BLUE", "GREEN", "RED", "YELLOW" }));
+        cbFillColor.setName("cbFillColor"); // NOI18N
 
         javax.swing.GroupLayout panelTopLayout = new javax.swing.GroupLayout(panelTop);
         panelTop.setLayout(panelTopLayout);
@@ -86,11 +93,17 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(rbRectangle)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(rbCircle)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cbBorderColor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(cbColor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cbFillColor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
                 .addComponent(btnClear)
-                .addContainerGap(300, Short.MAX_VALUE))
+                .addContainerGap())
         );
         panelTopLayout.setVerticalGroup(
             panelTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -100,8 +113,12 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(rbLine)
                     .addComponent(rbRectangle)
                     .addComponent(rbCircle)
-                    .addComponent(cbColor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnClear))
+                    .addComponent(cbBorderColor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnClear)
+                    .addComponent(jLabel1)
+                    .addGroup(panelTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                        .addComponent(cbFillColor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel2)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -145,10 +162,6 @@ public class MainFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void cbColorItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbColorItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbColorItemStateChanged
 
     private void drawPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawPanelMousePressed
         // TODO add your handling code here:
@@ -196,8 +209,11 @@ public class MainFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClear;
-    private javax.swing.JComboBox<String> cbColor;
+    private javax.swing.JComboBox<String> cbBorderColor;
+    private javax.swing.JComboBox<String> cbFillColor;
     private com.jmwfr.jpaint.MyCanvas drawPanel;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel panelTop;
     private javax.swing.JRadioButton rbCircle;
     private javax.swing.JRadioButton rbLine;
